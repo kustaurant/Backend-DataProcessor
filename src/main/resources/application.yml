@@ -4,5 +4,6 @@ spring:
   application.name: DataProcessor
 
 streams:
-  topics: ${STREAMS_TOPICS}
+  ai-analysis-start: ${STREAMS_AI_ANALYSIS_START_KEY}
+  ai-analysis-dlq: ${STREAMS_AI_ANALYSIS_DLQ_KEY}
   group: ${STREAMS_GROUP}
