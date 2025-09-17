@@ -12,15 +12,17 @@ import org.springframework.data.redis.stream.StreamMessageListenerContainer.Stre
 public class RedisStreamsConfig {
 
     @Bean
-    public StreamMessageListenerContainer<String, MapRecord<String, String, String>> streamMessageListenerContainer(
-            RedisConnectionFactory redisConnectionFactory
+    public StreamMessageListenerContainer<String, MapRecord<String,String,String>> streamMessageListenerContainer(
+            RedisConnectionFactory cf,
+            StreamMessageListenerContainerOptions<String, MapRecord<String,String,String>> options
     ) {
+        return StreamMessageListenerContainer.create(cf, options);
+    }
 
-        StreamMessageListenerContainerOptions<String, MapRecord<String, String, String>> options =
-                StreamMessageListenerContainerOptions.builder()
-                        .pollTimeout(Duration.ofSeconds(2)) // 블록킹 시간
-                        .build();
-
-        return StreamMessageListenerContainer.create(redisConnectionFactory, options);
+    @Bean
+    public StreamMessageListenerContainerOptions<String, MapRecord<String,String,String>> streamOptions() {
+        return StreamMessageListenerContainerOptions.builder()
+                .pollTimeout(Duration.ofSeconds(2))
+                .build();
     }
 }

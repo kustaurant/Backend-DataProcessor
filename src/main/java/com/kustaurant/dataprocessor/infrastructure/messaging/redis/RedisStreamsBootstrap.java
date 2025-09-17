@@ -23,8 +23,12 @@ public class RedisStreamsBootstrap implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        ensureGroup(streamsProps.aiAnalysisStart(), streamsProps.group());
-        ensureGroup(streamsProps.aiAnalysisDlq(), streamsProps.group());
+        init(streamsProps);
+    }
+
+    public void init(RedisStreamsProps streamsProps) {
+        streamsProps.topics()
+                .forEach(topic -> ensureGroup(topic, streamsProps.group()));
     }
 
     private void ensureGroup(String key, String group) {
