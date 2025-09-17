@@ -1,3 +1,8 @@
+### custom ###
+**/data
+.env
+
+
 HELP.md
 .gradle
 build/
