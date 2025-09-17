@@ -15,7 +15,7 @@ public class RedisStreamsUtils {
 
     private final RedisConnectionFactory cf;
 
-    public void ensureGroup(String key, String group) {
+    public void createStreamAndGroupIfNotExists(String key, String group) {
         var conn = cf.getConnection();
         var sc = conn.streamCommands();
         try {
@@ -23,7 +23,7 @@ public class RedisStreamsUtils {
                     key.getBytes(),
                     group,
                     ReadOffset.from("0"), // 0: 처음 메시지부터 읽기, $: 연결된 이후 메시지 부터 읽기
-                    true // 없을 경우 컨슈머 그룹을 만듦
+                    true // 없을 경우 스트림을 만듦
             );
         } catch (DataAccessException e) {
             if (e.getCause() instanceof RedisBusyException

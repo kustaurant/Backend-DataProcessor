@@ -1,4 +1,4 @@
-package com.kustaurant.dataprocessor.aianalysis.messaging;
+package com.kustaurant.dataprocessor.aianalysis.infrastructure.messaging;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Profile;

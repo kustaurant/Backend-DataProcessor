@@ -1,7 +1,7 @@
-package com.kustaurant.dataprocessor.aianalysis.messaging;
+package com.kustaurant.dataprocessor.aianalysis.infrastructure.messaging;
 
 import com.kustaurant.dataprocessor.aianalysis.AiAnalysisOrchestrator;
-import com.kustaurant.dataprocessor.aianalysis.dto.AiAnalysisRequest;
+import com.kustaurant.dataprocessor.aianalysis.infrastructure.messaging.dto.AiAnalysisRequest;
 import com.kustaurant.dataprocessor.infrastructure.messaging.MessageSubscriber;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

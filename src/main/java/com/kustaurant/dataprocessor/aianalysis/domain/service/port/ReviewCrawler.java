@@ -1,4 +1,4 @@
-package com.kustaurant.dataprocessor.aianalysis;
+package com.kustaurant.dataprocessor.aianalysis.domain.service.port;
 
 import java.util.List;
 

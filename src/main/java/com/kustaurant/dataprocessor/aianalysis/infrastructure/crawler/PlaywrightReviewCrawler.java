@@ -1,9 +1,9 @@
-package com.kustaurant.dataprocessor.aianalysis.infrastructure;
+package com.kustaurant.dataprocessor.aianalysis.infrastructure.crawler;
 
 import static com.kustaurant.dataprocessor.infrastructure.crawler.playwright.PlaywrightManager.*;
 import static com.kustaurant.dataprocessor.infrastructure.crawler.playwright.PlaywrightTools.*;
 
-import com.kustaurant.dataprocessor.aianalysis.ReviewCrawler;
+import com.kustaurant.dataprocessor.aianalysis.domain.service.port.ReviewCrawler;
 import com.microsoft.playwright.FrameLocator;
 import com.microsoft.playwright.Page;
 import java.util.ArrayList;
@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class PlaywrightReviewCrawler implements ReviewCrawler {
-
-    private final int MIN_REVIEW_LENGTH = 10;
 
     @Override
     public List<String> crawlReviews(String url) {
@@ -42,9 +40,7 @@ public class PlaywrightReviewCrawler implements ReviewCrawler {
             }
             // 리뷰 읽어오기
             entryFrame.locator("ul#_review_list > li > div.pui__vn15t2 > a")
-                    .allInnerTexts().stream()
-                    .map(r -> r.trim().replaceAll("\\s+", " "))
-                    .filter(r -> r.length() > MIN_REVIEW_LENGTH)
+                    .allInnerTexts()
                     .forEach(reviews::add);
         } finally {
             closeResourcesByThread();

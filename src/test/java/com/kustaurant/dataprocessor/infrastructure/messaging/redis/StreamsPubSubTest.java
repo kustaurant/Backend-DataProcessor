@@ -36,7 +36,7 @@ class StreamsPubSubTest {
 
     @BeforeEach
     void setUp() {
-        redisStreamsUtils.ensureGroup(TEST_TOPIC, TEST_GROUP);
+        redisStreamsUtils.createStreamAndGroupIfNotExists(TEST_TOPIC, TEST_GROUP);
     }
 
     @Test

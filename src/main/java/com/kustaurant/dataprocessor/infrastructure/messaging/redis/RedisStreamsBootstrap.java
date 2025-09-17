@@ -1,6 +1,6 @@
 package com.kustaurant.dataprocessor.infrastructure.messaging.redis;
 
-import com.kustaurant.dataprocessor.aianalysis.messaging.MessagingProps;
+import com.kustaurant.dataprocessor.aianalysis.infrastructure.messaging.MessagingProps;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
@@ -22,7 +22,7 @@ public class RedisStreamsBootstrap implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        redisStreamsUtils.ensureGroup(streamsProps.aiAnalysisStart(), streamsProps.group());
-        redisStreamsUtils.ensureGroup(streamsProps.aiAnalysisDlq(), streamsProps.group());
+        redisStreamsUtils.createStreamAndGroupIfNotExists(streamsProps.aiAnalysisStart(), streamsProps.group());
+        redisStreamsUtils.createStreamAndGroupIfNotExists(streamsProps.aiAnalysisDlq(), streamsProps.group());
     }
 }

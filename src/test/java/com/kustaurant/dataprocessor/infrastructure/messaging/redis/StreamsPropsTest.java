@@ -1,6 +1,6 @@
 package com.kustaurant.dataprocessor.infrastructure.messaging.redis;
 
-import com.kustaurant.dataprocessor.aianalysis.messaging.MessagingProps;
+import com.kustaurant.dataprocessor.aianalysis.infrastructure.messaging.MessagingProps;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
