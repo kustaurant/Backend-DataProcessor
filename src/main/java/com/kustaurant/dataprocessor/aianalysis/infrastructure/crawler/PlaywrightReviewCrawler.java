@@ -17,7 +17,7 @@ public class PlaywrightReviewCrawler implements ReviewCrawler {
 
     @Override
     public List<String> crawlReviews(String url) {
-        List<String> reviews = new ArrayList<>();
+        List<String> reviews;
 
         try {
             Page page = getPage();
@@ -39,9 +39,9 @@ public class PlaywrightReviewCrawler implements ReviewCrawler {
                 }
             }
             // 리뷰 읽어오기
-            entryFrame.locator("ul#_review_list > li > div.pui__vn15t2 > a")
-                    .allInnerTexts()
-                    .forEach(reviews::add);
+            reviews = new ArrayList<>(
+                    entryFrame.locator("ul#_review_list > li > div.pui__vn15t2 > a")
+                            .allInnerTexts());
         } finally {
             closeResourcesByThread();
         }

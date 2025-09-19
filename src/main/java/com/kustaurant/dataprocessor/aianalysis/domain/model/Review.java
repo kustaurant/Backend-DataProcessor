@@ -1,20 +1,16 @@
 package com.kustaurant.dataprocessor.aianalysis.domain.model;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class Review {
+public record Review(
+        String body
+) {
 
     private static final int MIN_REVIEW_LENGTH = 10;
 
-    private String body;
-
-    public static Review of(String body) {
+    public Review(String body) {
         if (!isValid(body)) {
             throw new IllegalArgumentException("Invalid review");
         }
-        return new Review(refineBody(body));
+        this.body = refineBody(body);
     }
 
     public static boolean isValid(String body) {

@@ -25,9 +25,12 @@ repositories {
 }
 
 dependencies {
+    // web
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    // lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // redis
@@ -36,6 +39,8 @@ dependencies {
     implementation 'com.microsoft.playwright:playwright:1.49.0'
     // test container
     testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    // ai
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai:1.0.0'
 }
 
 tasks.named('test') {

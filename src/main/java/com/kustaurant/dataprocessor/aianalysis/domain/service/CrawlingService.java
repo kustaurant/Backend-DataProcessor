@@ -15,7 +15,7 @@ public class CrawlingService {
     public List<Review> crawl(String url) {
         return reviewCrawler.crawlReviews(url).stream()
                 .filter(Review::isValid)
-                .map(Review::of)
+                .map(Review::new)
                 .toList();
     }
 }
